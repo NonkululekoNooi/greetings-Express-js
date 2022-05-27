@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetings</title>
+    <link rel="stylesheet" href="greet.css">
+
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>Greetings</h1>
+
+        <form class="greet">
+
+            <div class=" button">
+                <h2>Name</h2>
+                <input type="text" id="EnterYourName" placeholder="Name" name="name" required>
+            </div>
+
+
+            <div class="container">
+                <label class="first">
+                    <input type="radio" name="languages1" class="language" value="Siswati">
+                    <span class="label-body">Siswati</span>
+                </label>
+
+                <label class="second">
+                    <input type="radio" name="languages1" class="language" value="Xitsonga">
+                    <span class="label-body">Xitsonga</span>
+                </label>
+
+
+                <label class="third">
+                    <input type="radio" name="languages1" class="language" value="Tshivenda">
+                    <span class="label-body">Tshivenda</span>
+                </label>
+
+
+            </div>
+        </form>
+
+    </div>
+    <div class=" counters">
+        <h2> Counter </h2>
+        <span id="counter" value="counter"> </span>
+        <div id="counter">  </div>
+       <button id="reset" type="resetOne" name="reset" onclick="myReset()" value="reset"><span > RESET</span></button>
+    </div>
+
+    <button class="button" type="Greet Me" name="button" onclick="myGreetings()"> Greet Me </button>
+
+
+    </form>
+
+ 
+
+    <h3 id="heading"> </h3>
+
+
+   <script src="factory-function.js"></script>
+    <script src="greet.js"></script>
+
+</body>
+
+</html>
