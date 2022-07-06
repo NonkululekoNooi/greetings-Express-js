@@ -12,14 +12,15 @@ function greet(existingNames) {
         if ( notSelected(yourName) == true) {
             return ' YOU FORGOT TO TYPE YOUR NAME'
         }
-       
+        if (notLanguage(yourLanguage)== false){
+            return 'PLEASE CHOOSE A LANGUAGE'
+    }
     
 
+    
         if (regeX(yourName) === true) {
 
-            if (notLanguage(yourLanguage)== true){
-                return 'PLEASE CHOOSE A LANGUAGE'
-        }
+     
             if (yourName) {
                 if (yourLanguage === 'Siswati') {
                     return 'Sawubona, ' + yourName;
@@ -42,9 +43,10 @@ function greet(existingNames) {
         } 
     
      }
+
      function notLanguage(ourLanguages){
         if(ourLanguages === null){
-            return true
+            return false
         }
      }
 

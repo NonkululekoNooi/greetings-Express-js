@@ -35,7 +35,7 @@ function myGreetings() {
           document.getElementById("heading").innerHTML = myGreeted.greetingMessage(textInput.value, language);
           document.getElementById("counter").innerHTML = myGreeted.getCounter();
           localStorage.setItem('names',JSON.stringify(myGreeted.ourNames()))
-
+           EnterYourName.value= ' ';
         
      }
 
@@ -48,6 +48,9 @@ function myReset(){
      document.getElementById("counter").innerHTML = counter
      location.reload()
      document.getElementById("heading").innerHTML  = " "
+    
+
+    
 
 }
 
