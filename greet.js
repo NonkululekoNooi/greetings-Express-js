@@ -28,12 +28,16 @@ function myGreetings() {
 
      var checkedRadioBtn = document.querySelector("input[name='languages1']:checked");
 
-     if (checkedRadioBtn == null && storedNames == ""){
+     if (checkedRadioBtn == null && textInput.value  == "") {
 
-     heading.innerHTML = " Please choose a language and enter your name"
-     return
+          heading.innerHTML = " Please choose a language and enter your name"
+          return
+          
+     }else if (checkedRadioBtn == null && textInput.value !== '') {
+
+          heading.innerHTML = "PLEASE CHOOSE A LANGUAGE"
+
      }
-     
      if (checkedRadioBtn) {
           var language = checkedRadioBtn.value
           myGreeted.pushingNames(textInput.value)
@@ -42,13 +46,14 @@ function myGreetings() {
           document.getElementById("counter").innerHTML = myGreeted.getCounter();
           localStorage.setItem('names', JSON.stringify(myGreeted.ourNames()))
           EnterYourName.value = ' ';
-          
-     }else if(checkedRadioBtn != null){
-          return true
-     }else {
-          heading.innerHTML = " PLEASE CHOOSE A LANGUAGE"
-          
+
      }
+     //else if(checkedRadioBtn != null){
+     //      return true
+     // }else {
+     //      heading.innerHTML = " PLEASE CHOOSE A LANGUAGE"
+
+     // }
 
 
 
