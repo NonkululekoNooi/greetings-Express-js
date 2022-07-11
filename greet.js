@@ -5,18 +5,13 @@ const textInput = document.getElementById("EnterYourName");
 var storedNames = [];
 
 
-
-
 if (localStorage['names']) {
 
      storedNames = JSON.parse(localStorage.getItem(['names']));
 
 }
 
-
-
 let myGreeted = greet(storedNames);
-
 
 document.getElementById("counter").innerHTML = myGreeted.getCounter()
 
@@ -33,35 +28,37 @@ function myGreetings() {
           heading.innerHTML = " Please choose a language and enter your name"
           return
           
-     }else if (checkedRadioBtn == null && textInput.value !== '') {
-
-          heading.innerHTML = "PLEASE CHOOSE A LANGUAGE"
+     }else if(checkedRadioBtn !== null && textInput.value === ""){
+          heading.innerHTML = 'PLEASE ENTER YOUR NAME'
+          return
 
      }
+   
+     else if (checkedRadioBtn == null && textInput.value !== '') {
+          heading.innerHTML = "PLEASE CHOOSE A LANGUAGE"
+          return
+
+     } 
+    
+
      if (checkedRadioBtn) {
+
           var language = checkedRadioBtn.value
-          myGreeted.pushingNames(textInput.value)
+           myGreeted.pushingNames(textInput.value)
 
           document.getElementById("heading").innerHTML = myGreeted.greetingMessage(textInput.value, language);
           document.getElementById("counter").innerHTML = myGreeted.getCounter();
+          console.log((myGreeted.ourNames() + 'sdssdsdsdsdsds'))
           localStorage.setItem('names', JSON.stringify(myGreeted.ourNames()))
-          EnterYourName.value = ' ';
 
      }
-     //else if(checkedRadioBtn != null){
-     //      return true
-     // }else {
-     //      heading.innerHTML = " PLEASE CHOOSE A LANGUAGE"
 
-     // }
-
-
-
+      EnterYourName.value = ' ';
 }
 function myReset() {
      let counter = 0;
-     document.getElementById("reset").innerHTML = localStorage.clear()
      document.getElementById("counter").innerHTML = counter
+     localStorage.removeItem('names')
      location.reload()
      document.getElementById("heading").innerHTML = " "
 

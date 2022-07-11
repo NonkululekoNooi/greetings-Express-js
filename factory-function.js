@@ -6,11 +6,10 @@ function greet(existingNames) {
 
 
     function greetingMessage(yourName, yourLanguage) {
-        if (notSelected(yourName) == true) {
-            return ' YOU FORGOT TO TYPE YOUR NAME'
-        }
-        if (regeX(yourName) === true) {
-            if (yourName) {
+
+        if (yourName) {
+            if (/[aA-zZ]+$/.test(yourName)) {
+
                 if (yourLanguage === 'Siswati') {
                     return 'Sawubona, ' + yourName;
                 } else if (yourLanguage === 'Xitsonga') {
@@ -18,26 +17,22 @@ function greet(existingNames) {
                 } else if (yourLanguage === 'Tshivenda') {
                     return 'Aa/Ndaa, ' + yourName
                 }
+
             }
-        } else if (regeX(yourName) === false) {
-            return 'PLEASE USE ALPHABETS ONLY'
-        }
-    }
+            else {
+                return " PLEASE USE ALPHABETS ONLY"
+            }
 
-    function notSelected(username) {
-        if (!names.includes(username)) {
-            return true
         }
 
     }
-
-
 
     function getCounter() {
         return names.length;
     }
 
     function pushingNames(name) {
+
         if (name) {
             if (!names.includes(name)) {
                 names.push(name)
@@ -45,24 +40,10 @@ function greet(existingNames) {
         }
     }
 
+
     function ourNames() {
         return names
     }
-
-
-    function regeX(peopleNames) {
-        var letters = /^[aA-zZ]+$/g;
-
-        if (peopleNames.match(letters)) {
-            return true;
-        }
-        else {
-
-            return false;
-        }
-    }
-
-
 
 
     return {
@@ -70,11 +51,7 @@ function greet(existingNames) {
         greetingMessage,
         pushingNames,
         ourNames,
-        regeX,
-        notSelected,
-
-
-
+       
     }
 
 }
