@@ -12,43 +12,31 @@ if (localStorage['names']) {
 }
 
 let myGreeted = greet(storedNames);
-
 document.getElementById("counter").innerHTML = myGreeted.getCounter()
 
 
-
-
-
 function myGreetings() {
-
      var checkedRadioBtn = document.querySelector("input[name='languages1']:checked");
-
      if (checkedRadioBtn == null && textInput.value  == "") {
-
           heading.innerHTML = " Please choose a language and enter your name"
-          return
           
      }else if(checkedRadioBtn !== null && textInput.value === ""){
           heading.innerHTML = 'PLEASE ENTER YOUR NAME'
-          return
-
-     }
-   
-     else if (checkedRadioBtn == null && textInput.value !== '') {
-          heading.innerHTML = "PLEASE CHOOSE A LANGUAGE"
-          return
-
+     }else if (checkedRadioBtn == null && textInput.value !== '') {
+          heading.innerHTML = "PLEASE CHOOSE A LANGUAGE"  
      } 
+
+     setTimeout(function(){
+          heading.innerHTML = " "
+     }, 6000)
     
 
      if (checkedRadioBtn) {
-
+var textBox = textInput.value.toUpperCase()
           var language = checkedRadioBtn.value
-           myGreeted.pushingNames(textInput.value)
-
-          document.getElementById("heading").innerHTML = myGreeted.greetingMessage(textInput.value, language);
+           myGreeted.pushingNames(textBox)
+          document.getElementById("heading").innerHTML = myGreeted.greetingMessage(textBox, language);
           document.getElementById("counter").innerHTML = myGreeted.getCounter();
-          console.log((myGreeted.ourNames() + 'sdssdsdsdsdsds'))
           localStorage.setItem('names', JSON.stringify(myGreeted.ourNames()))
 
      }
