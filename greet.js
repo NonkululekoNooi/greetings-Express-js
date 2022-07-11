@@ -18,16 +18,16 @@ document.getElementById("counter").innerHTML = myGreeted.getCounter()
 function myGreetings() {
      var checkedRadioBtn = document.querySelector("input[name='languages1']:checked");
      if (checkedRadioBtn == null && textInput.value  == "") {
-          heading.innerHTML = " Please choose a language and enter your name"
+          document.getElementById("heading").innerHTML = " Please choose a language and enter your name"
           
      }else if(checkedRadioBtn !== null && textInput.value === ""){
-          heading.innerHTML = 'PLEASE ENTER YOUR NAME'
+          document.getElementById("heading").innerHTML = 'PLEASE ENTER YOUR NAME'
      }else if (checkedRadioBtn == null && textInput.value !== '') {
-          heading.innerHTML = "PLEASE CHOOSE A LANGUAGE"  
+          document.getElementById("heading").innerHTML = "PLEASE CHOOSE A LANGUAGE"  
      } 
 
      setTimeout(function(){
-          heading.innerHTML = " "
+          document.getElementById("heading").innerHTML = " "
      }, 6000)
     
 
