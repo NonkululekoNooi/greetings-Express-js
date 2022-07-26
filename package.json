@@ -1,0 +1,29 @@
+{
+  "name": "greeetings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "greeetings"
+  },
+  "scripts": {
+    "test": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NonkululekoNooi/greeetings.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NonkululekoNooi/greeetings/issues"
+  },
+  "homepage": "https://github.com/NonkululekoNooi/greeetings#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "mocha": "^10.0.0"
+  }
+}

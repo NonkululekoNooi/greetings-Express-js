@@ -1,17 +1,17 @@
-function greet(existingNames) {
+module.exports = function greet(existingNames) {
 
     var names = existingNames || [];
 
-
-
-
     function greetingMessage(yourName, yourLanguage) {
-let letters = /[aA-zZ]+$/
+      
+        let letters = /^[a-z A-Z]+$/
         if (yourName) {
+            console.log(yourName)
             console.log(letters.test(yourName))
             if (letters.test(yourName)) {
                 
                 if (yourLanguage === 'Siswati') {
+                    console.log()
                     return 'Sawubona, ' + yourName;
                 } else if (yourLanguage === 'Xitsonga') {
                     return 'Xewani/Avuxeni, ' + yourName
@@ -36,11 +36,11 @@ let letters = /[aA-zZ]+$/
 
     function pushingNames(name) {
 
-        if (name) {
-            if (!names.includes(name)) {
-                names.push(name)
-            }
-        }
+       if(names.includes(name)){
+        return false
+       }else{
+        return names.push(name)
+       }
     }
 
 
@@ -48,12 +48,18 @@ let letters = /[aA-zZ]+$/
         return names
     }
 
+    function errorMessages(username){
+        if(username == ''){
+            return 'ENTER YOUR NAME PLEASE!!!!!'
+        }
+    }
 
     return {
         getCounter,
         greetingMessage,
         pushingNames,
         ourNames,
+        errorMessages,
        
     }
 

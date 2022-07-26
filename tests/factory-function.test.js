@@ -1,27 +1,16 @@
+const assert = require('assert');
+const myGreeted = require('./GreeMe')
 
-describe("Greeted name", function(){
-    it("should return a persons name",function(){
-    let createGreets = greet('existingNames');
-    let message =createGreets.greetingMessage(names.push('Kamva'))
+describe("Name is entered with number", function(){
+    it("should return an error message",function(){
     
-    assert.equal(names.push('kamva'), message )
+     const greeted = myGreeted()
+
+    greeted.greetingMessage('Nk4852')
     
+    assert.equal('Please enter valid name',greeted.greetingMessage());
     })
     
-    })
-describe("Greeting a person with language without typing a name", function(){
-it("should greet return an error message",function(){
-let createGreets = greet('existingNames');
-let message =createGreets.greetingMessage('Sawubona')
-let messageOne =createGreets.greetingMessage('Xewani/Avuxeni')
-let messageTwo =createGreets.greetingMessage('Aa/Ndaa')
-
-assert.equal(' YOU FORGOT TO TYPE YOUR NAME', message )
-assert.equal(' YOU FORGOT TO TYPE YOUR NAME', messageOne )
-assert.equal(' YOU FORGOT TO TYPE YOUR NAME', messageTwo )
-
-})
-
 })
 
         
@@ -30,46 +19,59 @@ describe("The counter will count how many people has been greeted", function(){
     
     it('should start at zero if there is no one created', function(){
     
-        let createGreets = greet();
-        createGreets.greetingMessage()
+        const greeted = myGreeted()
+        greeted.greetingMessage()
     
-        assert.equal(0, createGreets.getCounter())
+        assert.equal(0, greeted.getCounter())
     })
-    it('should start at zero if there is no one created', function(){
     
-        let createGreets = greet();
-        createGreets.greetingMessage()
-    
-        assert.equal(0, createGreets.getCounter())
-    })
-    it('should greet and  counting when one person is greeted with Siswati', function(){
+//     it('should greet and  counting when one person is greeted with Siswati', function(){
 
-    let createGreets = greet();
-     let message = createGreets.getCounter()
+//     let myGreeted = greet();
+//     myGreeted.greetingMessage('Sawubona, Nkuli')
+  
 
-    assert.equal(1, message )
-    })
+//     assert.equal(1, myGreeted.getCounter() )
+//     })
 
-    it('should add up people that have been greeted', function(){
+//     it('should add up people that have been greeted', function(){
 
-            let createGreets = greet();
-            createGreets.greetingMessage('Zintle','Tshivenda')
-            createGreets.greetingMessage('Siya','Tshivenda')
+//             let createGreets = greet();
+//             createGreets.greetingMessage('Zintle')
+//             createGreets.greetingMessage('Siya')
           
         
         
-            assert.equal(2, createGreets.getCounter())
-        })
-        it('should add up people that have been greeted', function(){
+//             assert.equal(2, createGreets.getCounter())
+//         })
+//         it('should add up people that have been greeted', function(){
         
-            let createGreets = greet();
-            createGreets.greetingMessage('Zintle','Tshivenda')
-            createGreets.greetingMessage('Siya','Tshivenda')
-            createGreets.greetingMessage('codex','Tshivenda')
+//             let createGreets = greet();
+//             createGreets.greetingMessage('Zintle','Tshivenda')
+//             createGreets.greetingMessage('Siya','Tshivenda')
+//             createGreets.greetingMessage('codex','Tshivenda')
             
         
         
-            assert.equal(3, createGreets.getCounter())
+//             assert.equal(3, createGreets.getCounter())
         
+// })
 })
+
+describe("check the existing names",function(){
+    it("should store the names in an empty array", function(){
+        const greeted = myGreeted()
+        greeted.pushingNames('Nkuli')
+        assert.equal('Nkuli',greeted.ourNames('Nkuli'))
+    }) 
+    it("should store the names in an empty array", function(){
+        const greeted = myGreeted()
+        greeted.pushingNames('Zee')
+        assert.equal('Zee',greeted.ourNames('Zee'))
+    }) 
+    it("should store the names in an empty array", function(){
+        const greeted = myGreeted()
+        greeted.pushingNames('Lesedi')
+        assert.equal('Lesedi',greeted.ourNames('Lesedi'))
+    }) 
 })
