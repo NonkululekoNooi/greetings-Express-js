@@ -1,5 +1,5 @@
 const express = require('express');
-const exphbs  = require('express-handlebars/dist');
+const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const myGreeted = require('./GreetMe')
 
@@ -23,11 +23,23 @@ app.use(bodyParser.json())
  });
 
  app.post('/greetings',function(req,res){
-  
-    greeted.greetingMessage(req.body.enterName,req.body.languages1)
+  let names =req.body.enterName;
+  let lingo =req.body.languages1;
 
-   console.log(greeted.greetingMessage(req.body.enterName,req.body.languages1));
-   res.redirect('/');
+  if(names && lingo){
+   var messages = greeted.greetingMessage(names,lingo);
+  }
+   console.log(greeted.greetingMessage(names,lingo));
+
+   if(!names){
+      var messages =greeted.greetingMessage(" ",lingo)
+   }
+   // res.render('index',{
+   //    messages
+   // })
+   res.render('index',{
+      messages
+   })
 
  });
 

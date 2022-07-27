@@ -1,10 +1,9 @@
 {
   "name": "greeetings",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
-    "test": "greeetings"
+    "test": "tests"
   },
   "scripts": {
     "test": "index.js",
@@ -25,6 +24,8 @@
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
-    "mocha": "^10.0.0"
-  }
+    "mocha": "^10.0.0",
+    "save": "^2.5.0"
+  },
+  "description": ""
 }
