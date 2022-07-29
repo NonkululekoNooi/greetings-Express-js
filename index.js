@@ -48,10 +48,7 @@ app.post('/greetings', function (req, res) {
  
 
 
-   // if (names) {
-
-     
-   // }
+   
   
 
 
