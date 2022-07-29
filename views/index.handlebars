@@ -13,16 +13,18 @@
 
 <body>
 
+
+
     <div class="main">
-        <h1>Greetings</h1>
+        <h1 >Greetings</h1>
         <div class="six columns">
             <div class=" button">
                 <h2>Name</h2>
 
                 <form action="greetings" method="POST">
-                    <input type="text" id="EnterYourName" placeholder="Name" name="enterName" required>
+                    <input type="text" class="Enter" placeholder="Name" name="enterName">
 
-                    <div>
+                    <div class ="lingo">
                         <input type="radio" name="languages1" class="language" value="Siswati">
                         <span class="label-body">Siswati</span>
                         </label>
@@ -51,9 +53,8 @@
     
     <div class=" counters">
         <h2> Counter </h2>
-        <span id="counter" value="counter"> </span>
-        <div id="counter"> </div>
-        <button id="reset" type="button" name="reset" value="reset"><span> RESET</span></button>
+        <h2 id="counter" name="counting">{{counters}} </h2>
+        <button id="reset" type="submit" name="reset" value="reset"><span> RESET</span></button>
     </div>
 
 

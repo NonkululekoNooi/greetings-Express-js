@@ -20,19 +20,19 @@ describe("The counter will count how many people has been greeted", function(){
     it('should start at zero if there is no one created', function(){
     
         const greeted = myGreeted()
-        greeted.greetingMessage()
+        greeted.greetingMessage('','')
     
         assert.equal(0, greeted.getCounter())
     })
     
-//     it('should greet and  counting when one person is greeted with Siswati', function(){
+    it('should greet and  counting when one person is greeted with Siswati', function(){
 
-//     let myGreeted = greet();
-//     myGreeted.greetingMessage('Sawubona, Nkuli')
+    let myGreeted = greet();
+    myGreeted.greetingMessage('Sawubona', 'Nkuli')
   
 
-//     assert.equal(1, myGreeted.getCounter() )
-//     })
+    assert.equal(1, myGreeted.getCounter() )
+    })
 
 //     it('should add up people that have been greeted', function(){
 

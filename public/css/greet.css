@@ -4,12 +4,12 @@
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
- background-image: url(istockphoto-1309884850-170667a.jpg); 
+    background-image: url(istockphoto-1309884850-170667a.jpg);
 
 }
 
 .main {
-    margin-top: 20px;
+   
     width: 100%;
     text-align: center;
     display: flex;
@@ -20,9 +20,24 @@
 
     
 }
+.Enter{
+    
+        border-radius: 18px;
+        background:  white;
+        
+        padding: 20px; 
+        width: 200px;
+        height: 15px;    
+    
+}
+.language{
+    margin-top: 50px;
 
-.h2{
+}
+
+h2{
     margin-top: 10px;
+   
 }
 .button{
    margin-top: 30px;
@@ -33,6 +48,10 @@
 .first{
     margin-right: 40px;
    
+}
+.second{
+    margin-left:40px;
+
 }
 .third{
     margin-left: 40px;

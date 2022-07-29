@@ -1,13 +1,12 @@
 module.exports = function greet(existingNames) {
 
-    var names = existingNames || [];
+    var named = existingNames || {};
 
     function greetingMessage(yourName, yourLanguage) {
       
         let letters = /^[a-z A-Z]+$/
-        if (yourName) {
-            console.log(yourName)
-            console.log(letters.test(yourName))
+      
+        
             if (letters.test(yourName)) {
                 
                 if (yourLanguage === 'Siswati') {
@@ -20,39 +19,56 @@ module.exports = function greet(existingNames) {
                 }
             }
             else {
-                if(yourName.trim().length < 1) return 'PLEASE ENTER YOUR NAME'
+                
                 return " PLEASE USE ALPHABETS ONLY"
-            }
-
-        } else {
-            return 'Please enter valid name'
-        }
-
+            }  
+       
     }
+   
 
     function getCounter() {
-        return names.length;
+        var ourList = Object.keys(named);
+        return ourList.length;
     }
+
+    function storedNames(usingNames){
+        
+        if(named[usingNames] == undefined){
+            named[usingNames] =1
+        }else{
+            named[usingNames] ++
+        }
+    }
+    
 
     function pushingNames(name) {
 
-       if(names.includes(name)){
+       if(named.includes(name)){
         return false
        }else{
-        return names.push(name)
+        return named.push(name)
        }
     }
 
 
     function ourNames() {
-        return names
+        return named
     }
 
-    function errorMessages(username){
+    function errorMessages(username,lang){
+        if(username == '' && lang== ''){
+            return 'ENTER YOUR NAME AND LANGUAGE PLEASE!!!!!'
+        } 
+        if (lang == '' ){
+            return 'PLEASE CHOOSE A LANGUAGE !!!!'
+        }
         if(username == ''){
             return 'ENTER YOUR NAME PLEASE!!!!!'
-        }
+        } 
+       
+       
     }
+   
 
     return {
         getCounter,
@@ -60,6 +76,11 @@ module.exports = function greet(existingNames) {
         pushingNames,
         ourNames,
         errorMessages,
+        storedNames,
+        
+
+      
+    
        
     }
 
