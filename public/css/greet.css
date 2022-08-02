@@ -4,7 +4,7 @@
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    background-image: url(istockphoto-1309884850-170667a.jpg);
+    background-color: #A280B9;
 
 }
 
@@ -70,11 +70,20 @@ h2{
 .counters{
     margin-top: 30px;
 }
+.error{
+    color: red;
+}
 .reset{
     margin-top: 50px;
  cursor: pointer;
     border-color: aquamarine;
  
+}
+.table{
+    color: black;
+    margin-top: 20px;
+    
+
 }
 .btn{
     background: none;

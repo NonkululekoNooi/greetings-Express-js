@@ -1,3 +1,5 @@
+const flash = require('express-flash');
+const session = require('express-session');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -17,8 +19,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
+   var messages = greeted.greetingMessage()
 
-   res.render('index');
+   res.render('index',{
+      messages
+   });
 
 });
 
@@ -40,43 +45,65 @@ app.post('/greetings', function (req, res) {
    }
 
    else if (names && lingo) {
+     
       var messages = greeted.greetingMessage(names, lingo);
       greeted.storedNames(names);
+      
       var counters = greeted.getCounter();
      
    }
- 
-
-
-   
-  
-
+   else if(names){
+      var resets = greeted.resetBtn()
+   }
 
    res.render('index', {
       messages,
       counters,
+      resets
    
    })
 
 
-
 });
 
-app.post('/action', function (req, res) {
+app.get('/greets', function (req, res) {
 
-});
+ res.render('greets',{
+   names:greeted.ourNames()
+ })
 
-app.get('/greetings', function (req, res) {
  
-
-
 });
 
-app.get('/actions/:type', function (req, res) {
+app.get('/greeted', function (req, res) {
+ 
+   let listedNames = greeted.ourNames()
+  console.log(greeted.ourNames())
+   res.render("greets",{
+      ourNames:listedNames
 
+   });
+   });
+   
+app.get('/counted/:enterName', function (req, res) {
+   let name = req.params.enterName
+    let counted = greeted.ourNames()
+
+
+let personsCounter = counted[name]
+console.log(personsCounter)
+let sentence = `You have greeted ${name} for ${counted[name]} time`
+   res.render ('countedNames',{
+      sentence
+   })
 
 })
-const PORT = process.env.PORT || 3015;
+
+// app.get('/actions/:type', function (req, res) {
+
+
+// })
+const PORT = process.env.PORT || 3036;
 app.listen(PORT, function () {
    console.log('APP STARTED AT PORT');
 });

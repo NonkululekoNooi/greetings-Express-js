@@ -22,7 +22,7 @@
                 <h2>Name</h2>
 
                 <form action="greetings" method="POST">
-                    <input type="text" class="Enter" placeholder="Name" name="enterName">
+                    <input type="text" class="Enter" placeholder="Name" name="enterName" {{capturedNames}}>
 
                     <div class ="lingo">
                         <input type="radio" name="languages1" class="language" value="Siswati">
@@ -54,7 +54,7 @@
     <div class=" counters">
         <h2> Counter </h2>
         <h2 id="counter" name="counting">{{counters}} </h2>
-        <button id="reset" type="submit" name="reset" value="reset"><span> RESET</span></button>
+        <button id="reset" type="submit" name="reset" value="reset"><span>{{resets}} RESET</span></button>
     </div>
 
 
@@ -64,14 +64,21 @@
 
 
 
-    <h3 id="heading">{{messages}} </h3>
+    <h3 class="error">{{messages}} </h3>
+
+   
+
+
+
 
     </form>
+    
+       <a class="table" href="/greeted" name="actionType">
+    <button type="">GREETED NAMES</button>
+    </a>
 </div>
 
-    {{!--
-    <script src="factory-function.js"></script>
-    <script src="greet.js"></script> --}}
+  
 
 </body>
 
