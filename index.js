@@ -92,7 +92,7 @@ app.get('/counted/:enterName', function (req, res) {
 
 let personsCounter = counted[name]
 console.log(personsCounter)
-let sentence = `You have greeted ${name} for ${counted[name]} time`
+let sentence = `You have greeted ${name} for ${counted[name]} times`
    res.render ('countedNames',{
       sentence
    })
