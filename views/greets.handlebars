@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/greet.css">
+  <title>Document</title>
+</head>
+<body>
   <h1>Greeted names</h1>
 <table>
  <h2>Names </h2>
@@ -5,11 +15,28 @@
  <tr>
  {{#each ourNames}}
    
-<h2><br> <a class="table" href="/counted/{{@key}}">{{@key}}<br></a></h2>
+<h2><br> <a class="table" href="/counted/{{@this}}">{{@this}}<br></a></h2>
   
 {{/each}}
       
  </tr>
+  
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
    

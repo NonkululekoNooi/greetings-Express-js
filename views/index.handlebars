@@ -64,9 +64,13 @@
 
 
 
-    <h3 class="error">{{messages}} </h3>
+    <h3 class="error">{{message}}</h> </h3> 
 
-   
+
+   {{#if messages}}
+    <h1> {{messages.error}}</h1>
+
+    {{/if}}
 
 
 
@@ -74,6 +78,8 @@
     </form>
     
        <a class="table" href="/greeted" name="actionType">
+    
+    
     <button type="">GREETED NAMES</button>
     </a>
 </div>

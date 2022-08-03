@@ -12,6 +12,15 @@ const greeted = myGreeted()
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+
+ app.use(session({
+   secret : "using session http",
+   resave: false,
+   saveUninitialized: true
+ }));
+
+ app.use(flash());
+
 app.use(express.static("public"));
 
 
@@ -32,32 +41,24 @@ app.post('/greetings', function (req, res) {
    let lingo = req.body.languages1;
    let counter = req.body.counting;
 
-   if (!names && !lingo) {
-      var messages = greeted.errorMessages('', '');
-   }
+  
 
-   else if (names == '' && lingo) {
-      var messages = greeted.errorMessages(names, lingo);
-   }
-   else if (!lingo  && names) {
-      var messages = greeted.errorMessages(names, '');
-
-   }
-
-   else if (names && lingo) {
+   if (names && lingo) {
      
-      var messages = greeted.greetingMessage(names, lingo);
+      var message = greeted.greetingMessage(names, lingo);
       greeted.storedNames(names);
       
       var counters = greeted.getCounter();
      
+   }else{
+      req.flash('error',greeted.errorMessages(names,lingo))
    }
-   else if(names){
+ if(names){
       var resets = greeted.resetBtn()
    }
 
    res.render('index', {
-      messages,
+      message,
       counters,
       resets
    
@@ -92,7 +93,7 @@ app.get('/counted/:enterName', function (req, res) {
 
 let personsCounter = counted[name]
 console.log(personsCounter)
-let sentence = `You have greeted ${name} for ${counted[name]} time`
+let sentence = `You have greeted ${name} for ${counted[name]} times`
    res.render ('countedNames',{
       sentence
    })

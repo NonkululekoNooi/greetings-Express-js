@@ -29,6 +29,8 @@ module.exports = function greet() {
     else {
       named[usingNames]++;
     }
+
+    
     
 
   }
@@ -47,10 +49,10 @@ return myList
   }
 
   function errorMessages(username, lang) {
-    if (username == "" && lang == "") {
+    if (username == "" && !lang ) {
       return "ENTER YOUR NAME AND LANGUAGE PLEASE!!!!!";
     }
-    if (lang == "") {
+    if (!lang) {
       return "PLEASE CHOOSE A LANGUAGE !!!!";
     }
     if (username == "") {
