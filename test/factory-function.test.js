@@ -100,10 +100,11 @@ describe("The counter will count how many people has been greeted", function(){
             greeted.storedNames('Zintle','Tshivenda')
             greeted.storedNames('Siya','Tshivenda')
             greeted.storedNames('codex','Tshivenda')
+            greeted.storedNames('codex','Siswati')
             
         
         
-            assert.equal(3, greeted.getCounter())
+            assert.equal(4, greeted.getCounter())
         
 })
 })
