@@ -1,5 +1,5 @@
 const assert = require('assert');
-const myGreeted = require('./GreetMe')
+const myGreeted = require('../GreetMe')
 
 
 describe("Error messages", function(){
