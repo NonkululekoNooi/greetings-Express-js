@@ -4,12 +4,12 @@ body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    background-color: #A280B9;
+    /* background-color: #A280B9; */
+    background-image: url(pexels-abdullah-ghatasheh-1631677.jpg);
     width: 100%;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column; 
  justify-content: center;
  align-items: center;
 
@@ -20,20 +20,22 @@ body {
     
         border-radius: 18px;
         background:  white;
-        
+      
         padding: 20px; 
         width: 200px;
-        height: 15px;    
+        height: 10px;    
     
 }
 .language{
     margin-top: 50px;
-
 }
 
 h2{
-    margin-top: 10px;
+    margin-top: 30px;
    
+}
+h3{
+    padding-left: 20px;
 }
 .button{
    margin-top: 30px;
@@ -41,16 +43,10 @@ h2{
 
 
 }
-.first{
-    margin-right: 40px;
-   
-}
-.second{
-    margin-left:40px;
 
-}
-.third{
-    margin-left: 40px;
+.lingo{
+    display: flex;
+    justify-content: space-around;
 }
 .textName{
     margin-top: 10px;
@@ -64,11 +60,15 @@ h2{
     margin-top: 10px;
 }
 .counters{
+    display: flex;
     margin-top: 30px;
+    padding-left: 50px;
 }
-.error{
-    color: red;
+
+button {
+    padding: 5px;
 }
+
 .reset{
     margin-top: 50px;
  cursor: pointer;

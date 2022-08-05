@@ -53,16 +53,7 @@ app.post('/greetings', function (req, res) {
    }else{
       req.flash('error',greeted.errorMessages(names,lingo))
    }
- if(names){
-      var resets = greeted.resetBtn()
-   }
 
-   res.render('index', {
-      message,
-      counters,
-      resets
-   
-   })
 
 
 });
@@ -100,10 +91,6 @@ let sentence = `You have greeted ${name} for ${counted[name]} times`
 
 })
 
-// app.get('/actions/:type', function (req, res) {
-
-
-// })
 const PORT = process.env.PORT || 3036;
 app.listen(PORT, function () {
    console.log('APP STARTED AT PORT');

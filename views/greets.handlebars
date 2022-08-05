@@ -8,19 +8,22 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Greeted names</h1>
+
+
+  <h1>Greeted name</h1>
 <table>
- <h2>Names </h2>
+ <h3>Click the name below to view how many times they have been greeted:</h3>
  
  <tr>
  {{#each ourNames}}
    
-<h2><br> <a class="table" href="/counted/{{@this}}">{{@this}}<br></a></h2>
+<h2><br> <a class="table" href="/counted/{{@key}}">{{@key}}<br></a></h2>
   
 {{/each}}
       
  </tr>
   
+ 
 </body>
 </html> 
 

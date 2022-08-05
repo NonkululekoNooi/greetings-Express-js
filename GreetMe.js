@@ -1,6 +1,7 @@
 module.exports = function greet() {
   var named = {};
   let letters = /^[a-z A-Z]+$/
+
   function greetingMessage(yourName, yourLanguage) {
 
     if (letters.test(yourName) === true) {
@@ -23,7 +24,10 @@ module.exports = function greet() {
   }
 
   function storedNames(usingNames) {
-    if (named[usingNames] == undefined) {
+    if(letters.test(usingNames) == false){
+      return;
+       }
+    else if (named[usingNames] == undefined) {
       named[usingNames] = 1;
     } 
     else {
@@ -34,9 +38,7 @@ module.exports = function greet() {
     
 
   }
-  function resetBtn() {
-    return getCounter()
-  }
+  
 
  
 
@@ -50,10 +52,10 @@ return myList
 
   function errorMessages(username, lang) {
     if (username == "" && !lang ) {
-      return "ENTER YOUR NAME AND LANGUAGE PLEASE!!!!!";
+      return "ENTER YOUR NAME AND LANGUAGE PLEASE";
     }
     if (!lang) {
-      return "PLEASE CHOOSE A LANGUAGE !!!!";
+      return "PLEASE CHOOSE A LANGUAGE";
     }
     if (username == "") {
       return "ENTER YOUR NAME PLEASE";
@@ -68,7 +70,7 @@ return myList
     ourNames,
     errorMessages,
     storedNames,
-    resetBtn,
+  
  
   };
 };

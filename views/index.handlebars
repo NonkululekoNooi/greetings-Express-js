@@ -13,18 +13,30 @@
 
 <body>
 
-
+   
 
     <div class="main">
-        <h1 >Greetings</h1>
+
+
+        <h1>Greetings</h1>
         <div class="six columns">
             <div class=" button">
                 <h2>Name</h2>
 
                 <form action="greetings" method="POST">
-                    <input type="text" class="Enter" placeholder="Name" name="enterName" {{capturedNames}}>
 
-                    <div class ="lingo">
+
+</div>
+
+                    <div class=" counters">
+                        <input type="text" class="Enter" placeholder="Name" name="enterName" {{capturedNames}}>
+
+
+                        <h3 id="counter" name="counting">{{counters}} </h3>
+
+                    </div>
+                    <div class="lingo">
+                        <label class="first">
                         <input type="radio" name="languages1" class="language" value="Siswati">
                         <span class="label-body">Siswati</span>
                         </label>
@@ -41,6 +53,8 @@
                         </label>
                     </div>
                     <div>
+                        {{!-- <button id="reset" type="submit" name="reset" value="reset"><span>{{resets}}
+                                RESET</span></button> --}}
                         <button class="button" type="submit" name="button"> Greet Me </button>
 
                     </div>
@@ -50,41 +64,27 @@
 
 
 
-    
-    <div class=" counters">
-        <h2> Counter </h2>
-        <h2 id="counter" name="counting">{{counters}} </h2>
-        <button id="reset" type="submit" name="reset" value="reset"><span>{{resets}} RESET</span></button>
+
+        <h3 class="error">{{message}}</h3>
+        
+        {{#if messages}}
+        <h4> {{messages.error}}</h4>
+
+        {{/if}}
+
+
+
+
+        </form>
+
+        <a class="table" href="/greeted" name="actionType">
+
+
+            <button type="">GREETED NAMES</button>
+        </a>
     </div>
 
 
-
-
-
-
-
-
-    <h3 class="error">{{message}}</h> </h3> 
-
-
-   {{#if messages}}
-    <h1> {{messages.error}}</h1>
-
-    {{/if}}
-
-
-
-
-    </form>
-    
-       <a class="table" href="/greeted" name="actionType">
-    
-    
-    <button type="">GREETED NAMES</button>
-    </a>
-</div>
-
-  
 
 </body>
 
