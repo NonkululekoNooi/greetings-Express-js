@@ -70,7 +70,6 @@ app.get('/greets', function (req, res) {
 app.get('/greeted', function (req, res) {
  
    let listedNames = greeted.ourNames()
-  console.log(greeted.ourNames())
    res.render("greets",{
       ourNames:listedNames
 
@@ -91,7 +90,7 @@ let sentence = `You have greeted ${name} for ${counted[name]} times`
 
 })
 
-const PORT = process.env.PORT || 3036;
+const PORT = process.env.PORT || 3040;
 app.listen(PORT, function () {
    console.log('APP STARTED AT PORT');
 });
