@@ -104,7 +104,7 @@ describe("The counter will count how many people has been greeted", function(){
             
         
         
-            assert.equal(4, greeted.getCounter())
+            assert.equal(3, greeted.getCounter())
         
 })
 })
