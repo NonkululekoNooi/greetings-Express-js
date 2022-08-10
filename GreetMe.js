@@ -34,13 +34,8 @@ module.exports = function greet() {
       named[usingNames]++;
     }
 
-    
-    
-
   }
-  
 
- 
 
 function counted(){
 let myList = Object.keys(named);

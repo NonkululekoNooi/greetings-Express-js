@@ -28,18 +28,19 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
-   var messages = greeted.greetingMessage()
+   
 
    res.render('index',{
-      messages
+      
    });
 
 });
 
 app.post('/greetings', function (req, res) {
+   var message = greeted.greetingMessage()
    let names = req.body.enterName;
    let lingo = req.body.languages1;
-   let counter = req.body.counting;
+ 
 
   
 
@@ -54,14 +55,17 @@ app.post('/greetings', function (req, res) {
       req.flash('error',greeted.errorMessages(names,lingo))
    }
 
-
+   res.render('index',{
+      message,
+      counters
+   });
 
 });
 
 app.get('/greets', function (req, res) {
 
  res.render('greets',{
-   names:greeted.ourNames()
+   names:greeted.ourNames(),
  })
 
  
@@ -82,7 +86,6 @@ app.get('/counted/:enterName', function (req, res) {
 
 
 let personsCounter = counted[name]
-console.log(personsCounter)
 let sentence = `You have greeted ${name} for ${counted[name]} times`
    res.render ('countedNames',{
       sentence
@@ -90,7 +93,7 @@ let sentence = `You have greeted ${name} for ${counted[name]} times`
 
 })
 
-const PORT = process.env.PORT || 3040;
+const PORT = process.env.PORT || 3012;
 app.listen(PORT, function () {
    console.log('APP STARTED AT PORT');
 });
