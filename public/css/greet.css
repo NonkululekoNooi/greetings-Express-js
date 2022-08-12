@@ -14,7 +14,10 @@ body {
 
 }
 
-
+.error{
+    background-color: white;
+    color: blue
+}
 .Enter{
     
         border-radius: 18px;
