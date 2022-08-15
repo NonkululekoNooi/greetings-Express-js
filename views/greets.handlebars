@@ -11,19 +11,31 @@
 
 
   <h1>Greeted name</h1>
+  
+  <div class="arrows">
+
+  <button type=""> HOME </button>
+
+<button type="">NEXT PAGE </button>
+
+</div>
 <table>
  <h3>Click the name below to view how many times they have been greeted:</h3>
  
  <tr>
  {{#each ourNames}}
    
-<h2><br> <a class="table" href="/counted/{{@key}}">{{@key}}<br></a></h2>
+<h2><br> <a class="table" href="/counted/{{@this}}">{{@this}}</br></a></h2>
   
 {{/each}}
       
  </tr>
   
- 
+
+
+
+
+
 </body>
 </html> 
 

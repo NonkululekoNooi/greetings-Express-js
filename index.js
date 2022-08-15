@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
-   
+
 
    res.render('index',{
       
@@ -54,10 +54,7 @@ app.get('/', function (req, res) {
 app.post('/greetings', async function (req, res) {
  var message = await greeted.greetingMessage()
    let names = req.body.enterName;
-   let lingo = req.body.languages1;
- 
-
-  
+   let lingo = req.body.languages1; 
 
    if (names && lingo) {
      
@@ -77,10 +74,10 @@ app.post('/greetings', async function (req, res) {
 
 });
 
-app.get('/greets', function (req, res) {
+app.get('/greets', async function (req, res) {
 
  res.render('greets',{
-   names:greeted.ourNames(),
+   names:await greeted.ourNames(),
  })
 
  
@@ -88,17 +85,17 @@ app.get('/greets', function (req, res) {
 
 app.get('/greeted', async function (req, res) {
  
-   let listedNames =  greeted.ourNames()
-   res.render("greets",{
-      ourNames:listedNames
-
-   });
-   });
+   let listedNames = await greeted.ourNames()
    
-app.get('/counted/:enterName', function (req, res) {
-   let name = req.params.enterName
-    let counted = greeted.ourNames()
+   res.render("greets",{
+      ourNames:listedNames.map(e => e.names)
 
+   });
+   }); 
+   
+app.get('/counted/:enterName',async function (req, res) {
+   let name = req.params.enterName
+    let counted =await greeted.ourNames()
 
 let personsCounter = counted[name]
 let sentence = `You have greeted ${name} for ${counted[name]} time(s)`
@@ -108,7 +105,7 @@ let sentence = `You have greeted ${name} for ${counted[name]} time(s)`
 
 })
 
-const PORT = process.env.PORT || 3015;
+const PORT = process.env.PORT || 3011;
 app.listen(PORT, function () {
    console.log('APP STARTED AT PORT',PORT);
 });

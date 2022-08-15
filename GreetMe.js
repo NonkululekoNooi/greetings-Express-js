@@ -3,10 +3,7 @@ module.exports = function greet(pool) {
   let letters = /^[a-z A-Z]+$/
 
  async function greetingMessage(yourName, yourLanguage) {
-  // let naam = await pool.query('select * from greeted_Names')
-  // console.log(naam)
-
-    if (letters.test(yourName) === true) {
+      if (letters.test(yourName) === true) {
       if (yourLanguage === "Siswati") {
         console.log();
         return "Sawubona, " + yourName;
@@ -24,18 +21,16 @@ module.exports = function greet(pool) {
     let counter = await pool.query('select count(*) from greeted_names;');
     console.log(counter)
     return counter.rows[0].count
-  //  let ourList = Object.keys(named);
-  //   return ourList.length;
+  
   }
 
   async function storedNames(name) {
-    // if(letters.test(name) == false){
-    //   return;
-    //    }
-
+    if(letters.test(name)== false){
+      return;
+    }
+    
     let checkedName =   await pool.query('SELECT names FROM greeted_names where names =$1',[name])
-     //await pool.query('INSERT INTO greeted_names(names,counter) values($1, 1);', [usingNames])
-    //  console.log(checkedName)
+    
     if(checkedName.rowCount == 0){
       await pool.query('INSERT INTO greeted_names(names,counter) values($1, $2)', [name,1])
     }else{
@@ -50,11 +45,16 @@ let myList = Object.keys(named);
 return myList
 }
 
-  function ourNames() {
-    return named;
+  async function ourNames() {
+    let named = await pool.query('SELECT names FROM greeted_names ')
+    console.log('----')
+    console.log(named)
+    console.log('----')
+  return named.rows
+
   }
 
-  function errorMessages(username, lang) {
+  async function errorMessages(username, lang) {
     if (username == "" && !lang ) {
       return "ENTER YOUR NAME AND LANGUAGE PLEASE";
     }
