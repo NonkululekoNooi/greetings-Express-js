@@ -40,20 +40,20 @@ module.exports = function greet(pool) {
 
 
 
-function counted(){
-let myList = Object.keys(named);
-return myList
+async function counted(userName){
+  let counter = await pool.query('select counter from greeted_names WHERE  names=$1',[userName])
+    return counter.rows
+
 }
 
   async function ourNames() {
     let named = await pool.query('SELECT names FROM greeted_names ')
-    console.log('----')
-    console.log(named)
-    console.log('----')
   return named.rows
 
   }
-
+async function rested(){
+  return await pool.query('DELETE FROM greeted_names')
+}
   async function errorMessages(username, lang) {
     if (username == "" && !lang ) {
       return "ENTER YOUR NAME AND LANGUAGE PLEASE";
@@ -74,6 +74,7 @@ return myList
     ourNames,
     errorMessages,
     storedNames,
+    rested
   
  
   };

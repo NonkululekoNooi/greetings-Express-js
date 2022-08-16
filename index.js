@@ -86,26 +86,38 @@ app.get('/greets', async function (req, res) {
 app.get('/greeted', async function (req, res) {
  
    let listedNames = await greeted.ourNames()
+   let list = listedNames.map(e => e.names)
+   
    
    res.render("greets",{
-      ourNames:listedNames.map(e => e.names)
+   
+      ourNames:list
 
    });
    }); 
    
-app.get('/counted/:enterName',async function (req, res) {
-   let name = req.params.enterName
-    let counted =await greeted.ourNames()
-
-let personsCounter = counted[name]
-let sentence = `You have greeted ${name} for ${counted[name]} time(s)`
-   res.render ('countedNames',{
-      sentence
+   app.get('/counted/:enterName',async function (req, res) {
+      let name = req.params.enterName
+       let counted =await greeted.counted(name)
+       let listed = counted.map(e => e.counter)
+       
+   console.log(counted)
+   
+   let sentence = `You have greeted ${name} for ${listed} time(s)`
+      res.render ('countedNames',{
+         sentence
+      })
+   
    })
 
-})
 
-const PORT = process.env.PORT || 3011;
+app.get('/resets', async function (req, res){
+   await greeted.rested();
+
+   res.redirect('/')
+});
+
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, function () {
    console.log('APP STARTED AT PORT',PORT);
 });

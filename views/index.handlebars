@@ -13,7 +13,7 @@
 
 <body>
 
-   
+
 
     <div class="main">
 
@@ -26,62 +26,66 @@
                 <form action="greetings" method="POST">
 
 
-</div>
+            </div>
 
-                    <div class=" counters">
-                        <input type="text" class="Enter" placeholder="Name" name="enterName" {{capturedNames}}>
-
-
-                        <h3 id="counter" name="counting">{{counters}} </h3>
-
-                    </div>
-                    <div class="lingo">
-                        <label class="first">
-                        <input type="radio" name="languages1" class="language" value="Siswati">
-                        <span class="label-body">Siswati</span>
-                        </label>
-
-                        <label class="second">
-                            <input type="radio" name="languages1" class="language" value="Xitsonga">
-                            <span class="label-body">Xitsonga</span>
-                        </label>
+            <div class=" counters">
+                <input type="text" class="Enter" placeholder="Name" name="enterName" {{capturedNames}}>
 
 
-                        <label class="third">
-                            <input type="radio" name="languages1" class="language" value="Tshivenda">
-                            <span class="label-body">Tshivenda</span>
-                        </label>
-                    </div>
-                    <div>
-                        {{!-- <button id="reset" type="submit" name="reset" value="reset"><span>{{resets}}
-                                RESET</span></button> --}}
-                        <button class="button" type="submit" name="button"> Greet Me </button>
-
-                    </div>
+                <h3 id="counter" name="counting">{{counters}} </h3>
 
             </div>
+            <div class="lingo">
+                <label class="first">
+                    <input type="radio" name="languages1" class="language" value="Siswati">
+                    <span class="label-body">Siswati</span>
+                </label>
+
+                <label class="second">
+                    <input type="radio" name="languages1" class="language" value="Xitsonga">
+                    <span class="label-body">Xitsonga</span>
+                </label>
+
+
+                <label class="third">
+                    <input type="radio" name="languages1" class="language" value="Tshivenda">
+                    <span class="label-body">Tshivenda</span>
+                </label>
+            </div>
+            <div>
+                {{!-- <button id="reset" type="submit" name="reset" value="reset"><span>{{resets}}
+                        RESET</span></button> --}}
+                <button class="button" type="submit" name="button"> Greet Me </button>
+
+            </div>
+
         </div>
+    </div>
+
+    </form>
+    <a href="/resets">
+        <button class="button" type="">Reset</button>
+    </a>
+
+
+    <h3 class="error">{{message}}</h3>
+
+    {{#if messages}}
+    <h4> {{messages.error}}</h4>
+
+    {{/if}}
 
 
 
 
-        <h3 class="error">{{message}}</h3>
-        
-        {{#if messages}}
-        <h4> {{messages.error}}</h4>
 
-        {{/if}}
+    <a class="table" href="/greeted" name="actionType">
 
-
-
-
-        </form>
-
-        <a class="table" href="/greeted" name="actionType">
-
-
+        <div class="button">
             <button type="">GREETED NAMES</button>
-        </a>
+
+    </a>
+    </div>
     </div>
 
 
