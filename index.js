@@ -8,18 +8,18 @@ const myGreeted = require('./GreetMe')
 const pg = require("pg");
 const Pool = pg.Pool;
 
-let useSSL = false;
-let local = process.env.LOCAL || false;
-if (process.env.DATABASE_URL && !local){
-    useSSL = true;
-}
+
+
 
 const connectionString = 'postgresql://postgres:pg123@localhost:5432/mygreetings'
 
 const pool = new Pool({
    connectionString,
-   ssl : useSSL
+   ssl : { 
+		rejectUnauthorized : false
+	}
  });
+
 
 const app = express();
 const greeted = myGreeted(pool)
@@ -52,12 +52,11 @@ app.get('/', function (req, res) {
 });
 
 app.post('/greetings', async function (req, res) {
- var message = await greeted.greetingMessage()
    let names = req.body.enterName;
    let lingo = req.body.languages1; 
 
    if (names && lingo) {
-     
+
       var message = await greeted.greetingMessage(names, lingo);
       await greeted.storedNames(names);
       
