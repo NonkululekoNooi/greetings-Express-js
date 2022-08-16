@@ -1,20 +1,26 @@
 module.exports = function greet(pool) {
   var named = {};
   let letters = /^[a-z A-Z]+$/;
-
+  let message = ""
   async function greetingMessage(yourName, yourLanguage) {
     if (letters.test(yourName) === true) {
       if (yourLanguage === "Siswati") {
-        return "Sawubona, " + yourName;
+        message =  "Sawubona, " + yourName;
       } else if (yourLanguage === "Xitsonga") {
-        return "Xewani/Avuxeni, " + yourName;
+        message =  "Xewani/Avuxeni, " + yourName;
       } else if (yourLanguage === "Tshivenda") {
-        return "Aa/Ndaa, " + yourName;
+        message =  "Aa/Ndaa, " + yourName;
       }
     } else {
-      return " PLEASE USE ALPHABETS ONLY";
+      message =  " PLEASE USE ALPHABETS ONLY";
     }
+    return message
   }
+
+  async function getMessage(){
+    return message
+  }
+
 
   async function getCounter() {
     let counter = await pool.query("select count(*) from greeted_names;");
@@ -59,7 +65,7 @@ module.exports = function greet(pool) {
   async function rested() {
     return await pool.query("DELETE FROM greeted_names");
   }
-  async function errorMessages(username, lang) {
+   function errorMessages(username, lang) {
     if (username == "" && !lang) {
       return "ENTER YOUR NAME AND LANGUAGE PLEASE";
     }
@@ -73,6 +79,7 @@ module.exports = function greet(pool) {
 
   return {
     getCounter,
+    getMessage,
     greetingMessage,
     counted,
     ourNames,

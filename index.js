@@ -42,29 +42,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
 
-
-   res.render('index',{
-      
-   });
-
-});
-
-app.post('/greetings', async function (req, res) {
-   let names = req.body.enterName;
-   let lingo = req.body.languages1; 
-
-   if (names && lingo) {
-
-      var message = await greeted.greetingMessage(names, lingo);
-      await greeted.storedNames(names);
-      
-      var counters = await greeted.getCounter();
-     
-   }else{
-      req.flash('error', await greeted.errorMessages(names,lingo))
-   }
+   var message = await greeted.getMessage();
+   var counters = await greeted.getCounter();
 
    res.render('index',{
       message,
@@ -73,27 +54,36 @@ app.post('/greetings', async function (req, res) {
 
 });
 
-app.get('/greets', async function (req, res) {
+app.post('/greetings', async function (req, res) {
+   let names = req.body.enterName;
+   let lingo = req.body.languages1; 
+   if (names && lingo) {
+      await greeted.greetingMessage(names, lingo);
+      await greeted.storedNames(names);
+      
+     
+   }else{
+      req.flash('error',  greeted.errorMessages(names,lingo))
+   }
 
- res.render('greets',{
-   names:await greeted.ourNames(),
- })
+  res.redirect('/')
 
- 
 });
 
 app.get('/greeted', async function (req, res) {
- 
+
+
    let listedNames = await greeted.ourNames()
-   let list = listedNames.map(e => e.names)
+  let list = listedNames.map(e => e.names)
    
    
-   res.render("greets",{
+  res.render("greeted",{
    
-      ourNames:list
+     ourNames:list
 
    });
-   }); 
+});
+
    
    app.get('/counted/:enterName',async function (req, res) {
       let name = req.params.enterName
