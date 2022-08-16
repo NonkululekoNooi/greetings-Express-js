@@ -77,7 +77,7 @@ app.get('/greeted', async function (req, res) {
   let list = listedNames.map(e => e.names)
    
    
-  res.render("greeted",{
+  res.render("greets",{
    
      ourNames:list
 
