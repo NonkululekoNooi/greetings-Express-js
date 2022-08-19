@@ -19,9 +19,9 @@ module.exports = function greet(db) {
   }
 
   async function getCounter() {
-    let counter = await db.one("select count(*) from greeted_names;");
-    console.log(counter)
-    return counter.count;
+    let counteres = await db.one("select count(*) from greeted_names;");
+    console.log(counteres)
+    return counteres.count;
   }
 
   async function storedNames(name) {

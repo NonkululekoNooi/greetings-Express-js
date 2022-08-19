@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", async function (req, res) {
-  var counters = await greeted.getCounter();
+ var counters = await greeted.getCounter();
   
   res.render("index", {
     counters,
@@ -54,16 +54,16 @@ app.get("/", async function (req, res) {
 });
 
 app.post("/greetings", async function (req, res) {
-  let names = req.body.enterName;
+  let names = req.body.enterName.toUpperCase();
   let lingo = req.body.languages1;
 
   if (names && lingo) {
     var message = greeted.greetingMessage(names, lingo);
-    await greeted.storedNames(names)
-    var counters = await greeted.getCounter() 
-    
+    var counters = await greeted.getCounter(); 
+    await greeted.storedNames(names);
 
-  } else {
+  }
+  else {
     req.flash("error", greeted.errorMessages(names, lingo));
   }
 
@@ -75,7 +75,7 @@ app.post("/greetings", async function (req, res) {
 
 app.get("/greeted", async function (req, res) {
   let ourNames = await greeted.ourNames();
-  console.log(ourNames);
+ 
   res.render("greeted", {
     ourNames: ourNames,
   });
@@ -91,9 +91,8 @@ app.get("/greeted", async function (req, res){
 app.get('/counted/:enterName', async function (req, res) {
   let naming = req.params.enterName;
   let counted = await greeted.counted(naming);
-  
   let sentence = `You have greeted ${naming} for ${counted} time(s)`;
-  console.log(counted);
+
   res.render('countedNames', {
     sentence
   });
@@ -101,6 +100,7 @@ app.get('/counted/:enterName', async function (req, res) {
 
 app.get("/resets", async function (req, res) {
   await greeted.rested();
+  
   req.flash("error","YOU RESETED EVERYTHING");
   res.redirect("/");
 });
