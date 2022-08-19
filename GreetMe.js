@@ -1,30 +1,27 @@
-module.exports = function greet(pool) {
-  var named = {};
+module.exports = function greet(db) {
   let letters = /^[a-z A-Z]+$/;
-  let message = ""
-  async function greetingMessage(yourName, yourLanguage) {
+  var named = {};
+
+
+   function greetingMessage(yourName, yourLanguage) {
     if (letters.test(yourName) === true) {
       if (yourLanguage === "Siswati") {
-        message =  "Sawubona, " + yourName;
+        return "Sawubona, " + yourName;
       } else if (yourLanguage === "Xitsonga") {
-        message =  "Xewani/Avuxeni, " + yourName;
+        return"Xewani/Avuxeni, " + yourName;
       } else if (yourLanguage === "Tshivenda") {
-        message =  "Aa/Ndaa, " + yourName;
+        return  "Aa/Ndaa, " + yourName;
       }
     } else {
-      message =  " PLEASE USE ALPHABETS ONLY";
+      return " PLEASE USE ALPHABETS ONLY";
     }
-    return message
+    
   }
-
-  async function getMessage(){
-    return message
-  }
-
 
   async function getCounter() {
-    let counter = await pool.query("select count(*) from greeted_names;");
-    return counter.rows[0].count;
+    let counter = await db.one("select count(*) from greeted_names;");
+    console.log(counter)
+    return counter.count;
   }
 
   async function storedNames(name) {
@@ -32,38 +29,36 @@ module.exports = function greet(pool) {
       return;
     }
 
-    let checkedName = await pool.query(
+    let checkedName = await db.oneOrNone(
       "SELECT names FROM greeted_names where names =$1",
       [name]
     );
 
-    if (checkedName.rowCount == 0) {
-      await pool.query(
+    if (checkedName == null) {
+      await db.none(
         "INSERT INTO greeted_names(names,counter) values($1, $2)",
         [name, 1]
       );
     } else {
-      await pool.query(
+      await db.none (
         "UPDATE greeted_names set counter = counter + 1 WHERE names = $1",
         [name]
       );
     }
   }
 
-  async function counted(userName) {
-    let counter = await pool.query(
-      "select counter from greeted_names WHERE  names=$1",
-      [userName]
-    );
-    return counter.rows;
+  async function counted(username) {
+    let counter = await db.one(
+      'SELECT counter FROM greeted_names WHERE  names=$1',[username]);
+    return counter.count;
   }
 
   async function ourNames() {
-    let named = await pool.query("SELECT names FROM greeted_names ");
-    return named.rows;
+    let named = await db.manyOrNone("SELECT names FROM greeted_names ");
+    return named;
   }
   async function rested() {
-    return await pool.query("DELETE FROM greeted_names");
+    return await db.none("DELETE FROM greeted_names");
   }
    function errorMessages(username, lang) {
     if (username == "" && !lang) {
@@ -79,7 +74,6 @@ module.exports = function greet(pool) {
 
   return {
     getCounter,
-    getMessage,
     greetingMessage,
     counted,
     ourNames,
