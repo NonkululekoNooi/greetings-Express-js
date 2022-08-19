@@ -80,7 +80,7 @@ h3{
 .arrows{
    
     padding: 20px;
-    border-radius: 20px; 
+    border-radius: 8px; 
     justify-content:space-between;
     border-color: rgb(224, 140, 140);
 }
