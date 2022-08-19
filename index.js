@@ -47,6 +47,7 @@ app.use(bodyParser.json());
 
 app.get("/", async function (req, res) {
   var counters = await greeted.getCounter();
+  
   res.render("index", {
     counters,
   });
@@ -58,8 +59,9 @@ app.post("/greetings", async function (req, res) {
 
   if (names && lingo) {
     var message = greeted.greetingMessage(names, lingo);
-    var counters = await greeted.getCounter() 
     await greeted.storedNames(names)
+    var counters = await greeted.getCounter() 
+    
 
   } else {
     req.flash("error", greeted.errorMessages(names, lingo));
@@ -67,7 +69,7 @@ app.post("/greetings", async function (req, res) {
 
   res.render("index", {
     message,
-    counters
+   counters
   });
 });
 
@@ -87,9 +89,10 @@ app.get("/greeted", async function (req, res){
 })
 
 app.get('/counted/:enterName', async function (req, res) {
-  let name = req.params.enterName;
-  let counted = await greeted.counted(name);
-  let sentence = `You have greeted ${name} for ${counted} time(s)`;
+  let naming = req.params.enterName;
+  let counted = await greeted.counted(naming);
+  
+  let sentence = `You have greeted ${naming} for ${counted} time(s)`;
   console.log(counted);
   res.render('countedNames', {
     sentence
@@ -98,7 +101,7 @@ app.get('/counted/:enterName', async function (req, res) {
 
 app.get("/resets", async function (req, res) {
   await greeted.rested();
-
+  req.flash("error","YOU RESETED EVERYTHING");
   res.redirect("/");
 });
 

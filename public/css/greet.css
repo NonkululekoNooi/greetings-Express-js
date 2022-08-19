@@ -16,8 +16,13 @@ body {
 
 .error{
     background-color: white;
-    color: blue
+    color: peach;
 }
+.errored{
+    background-color:white;
+    color: red;
+}
+
 .Enter{
     
         border-radius: 18px;

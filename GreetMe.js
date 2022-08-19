@@ -50,7 +50,7 @@ module.exports = function greet(db) {
   async function counted(username) {
     let counter = await db.one(
       'SELECT counter FROM greeted_names WHERE  names=$1',[username]);
-    return counter.count;
+    return counter.counter;
   }
 
   async function ourNames() {
