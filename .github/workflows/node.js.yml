@@ -50,7 +50,7 @@ jobs:
     - run: npm install -g npm
     - run: npm install
     - run: |
-        PASSWORD=pg123 psql -h localhost -U postgres -d mygreetings_test -a -f << path to sql file './db/database.sql'>>
+        PGPASSWORD=pg123 postgres-h localhost -U postgres -d mygreetings_test -a -f << path to sql file './db/database.sql'>>
     - run: npm run build --if-present
     - run: npm test
     env: 
