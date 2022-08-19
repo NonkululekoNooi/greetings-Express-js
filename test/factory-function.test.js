@@ -81,7 +81,7 @@ describe("The counter will count how many people has been greeted", async functi
     });
   it("should start at zero if there is no name and language entered", async function () {
 
-    const greeted = myGreeted(db);
+    const greeted = myGreeted(db)
 
     assert.equal(0, await greeted.getCounter());
   });
