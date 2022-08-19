@@ -5,18 +5,17 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     background-image: url(pexels-abdullah-ghatasheh-1631677.jpg);
-    width: 100%;
-    text-align: center;
     display: flex;
     flex-direction: column; 
  justify-content: center;
  align-items: center;
+    /* width: 100%; */
+    /* text-align: center; */
 
 }
-
 .error{
-    background-color: white;
-    color: peach;
+    background-color: black;
+    color: blanchedalmond
 }
 .errored{
     background-color:white;
@@ -33,20 +32,18 @@ body {
     
 }
 .language{
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
-/* h2{
-    margin-top: 20px;
-   
-} */
 h3{
     padding-left: 20px;
 }
 .button{
-   margin-top: 30px;
+   margin-top: 10px;
 }
-
+.greet{
+    border-radius: 10px;
+}
 .lingo{
     display: flex;
     justify-content: space-around;
@@ -61,6 +58,11 @@ h3{
 }
 .greet{
     margin-top: 10px;
+    border-color: red;
+}
+.greetMe{
+    margin-top: 20px;
+    border-color: red;
 }
 .counters{
     display: flex;
@@ -70,6 +72,8 @@ h3{
 
 .button {
     padding: 5px;
+    border-color: red;
+    border-radius: 10px; 
 }
 .arrows{
    
@@ -82,9 +86,9 @@ h3{
     border-radius: 20px; 
 }
 .reset{
-    margin-top: 20px;
+
  cursor: pointer;
-    border-color: aquamarine;
+    border-color: red;
  
 }
 .table{

@@ -53,38 +53,28 @@
                 </label>
             </div>
             <div>
-                {{!-- <button id="reset" type="submit" name="reset" value="reset"><span>{{resets}}
-                        RESET</span></button> --}}
-                <button class="button" type="submit" name="button"> Greet Me </button>
+                <button class="greetMe" type="submit" name="button"> Greet Me </button>
 
             </div>
 
         </div>
     </div>
-
-    </form>
-    <a href="/resets">
-        <button class="button" type="">Reset</button>
-    </a>
-
-
-    <h3 class="error">{{message}}</h3>
-
-    {{#if messages}}
+              <h3 class="error">{{message}}</h3>
+              {{#if messages}}
     <h4 class="errored"> {{messages.error}}</h4>
 
     {{/if}}
-
-
-
-
-
+    </form>
+    <div class="button">
+    <a href="/resets">
+        <button class="reset" type="">Reset</button>
+    </a>
     <a class="table" href="/greeted" method:'actionType' name="actionType">
 
         <div class="button">
-            <button type="">GREETED NAMES</button>
-
+            <button class='greet'type="">GREETED NAMES</button>
     </a>
+    </div>
     </div>
     </div>
 
