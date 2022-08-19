@@ -59,8 +59,8 @@ app.post("/greetings", async function (req, res) {
 
   if (names && lingo) {
     var message = greeted.greetingMessage(names, lingo);
-    var counters = await greeted.getCounter(); 
     await greeted.storedNames(names);
+    var counters = await greeted.getCounter(); 
 
   }
   else {

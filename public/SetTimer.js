@@ -1,4 +1,4 @@
 setTimeout (function() {
-    document.querySelectOR(".error").innerHTML= ""
+    document.querySelector(".error").innerHTML= ""
     document.querySelector(".errored").innerHTML= ""
-},2000);
+},4000);
