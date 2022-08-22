@@ -83,7 +83,7 @@ describe("The counter will count how many people has been greeted", async functi
 
   it("should counting when one person is greeted with Siswati", async function () {
     const greeted = myGreeted(db);
-    await greeted.storedNames("Nkuli");
+    await greeted.storedNames("Nkuli","Siswati");
 
     assert.equal(1, await greeted.getCounter());
   });
