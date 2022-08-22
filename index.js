@@ -3,6 +3,7 @@ const session = require("express-session");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const myGreetedRoutes = require('./routes/greeted1');
 const myGreeted = require("./GreetMe");
 
 const pgp = require("pg-promise")();
@@ -26,6 +27,7 @@ const config = {
 const db = pgp(config);
 
 const greeted = myGreeted(db);
+const greetedRoutes =myGreetedRoutes(greeted);
 
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -45,65 +47,17 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", async function (req, res) {
- var counters = await greeted.getCounter();
-  
-  res.render("index", {
-    counters,
-  });
-});
+app.get("/",greetedRoutes.home);
 
-app.post("/greetings", async function (req, res) {
-  let names = req.body.enterName.toUpperCase();
-  let lingo = req.body.languages1;
+app.post("/greetings",greetedRoutes.myGreets);
 
-  if (names && lingo) {
-    var message = greeted.greetingMessage(names, lingo);
-    await greeted.storedNames(names);
-    var counters = await greeted.getCounter(); 
+app.get("/greeted", greetedRoutes.lists_of_names);
 
-  }
-  else {
-    req.flash("error", greeted.errorMessages(names, lingo));
-  }
+app.get("/greeted",greetedRoutes.named)
 
-  res.render("index", {
-    message,
-   counters
-  });
-});
+app.get('/counted/:enterName',greetedRoutes.enteredNames);
 
-app.get("/greeted", async function (req, res) {
-  let ourNames = await greeted.ourNames();
- 
-  res.render("greeted", {
-    ourNames: ourNames,
-  });
-});
-
-app.get("/greeted", async function (req, res){
-   let listsOfNames =req.body.enterName
-   res.render("ourNames",{
-      ourNames: listsOfNames
-   })
-})
-
-app.get('/counted/:enterName', async function (req, res) {
-  let naming = req.params.enterName;
-  let counted = await greeted.counted(naming);
-  let sentence = `You have greeted ${naming} for ${counted} time(s)`;
-
-  res.render('countedNames', {
-    sentence
-  });
-});
-
-app.get("/resets", async function (req, res) {
-  await greeted.rested();
-  
-  req.flash("error","YOU RESETED EVERYTHING");
-  res.redirect("/");
-});
+app.get("/resets", greetedRoutes.resetButton);
 
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, function () {
