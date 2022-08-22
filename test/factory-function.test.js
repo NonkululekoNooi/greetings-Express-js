@@ -79,12 +79,7 @@ describe("The counter will count how many people has been greeted", async functi
     this.beforeEach(async function () {
         await db.none('DELETE FROM greeted_names');
     });
-  it("should start at zero if there is no name and language entered", async function () {
-
-    const greeted = myGreeted(db)
-
-    assert.equal(0, await greeted.getCounter());
-  });
+  
 
   it("should counting when one person is greeted with Siswati", async function () {
     const greeted = myGreeted(db);
