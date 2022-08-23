@@ -112,7 +112,7 @@ describe("Greeted names stored in an array", function () {
     const greeted = myGreeted(db);
     await greeted.ourNames([{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]);
 
-    assert.deepEqual( [{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]
+    assert.deepqual( [{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]
     ,await greeted.ourNames([{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]))
     
   });
