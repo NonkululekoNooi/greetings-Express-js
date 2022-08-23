@@ -1,4 +1,6 @@
 module.exports = function myGreetedRoutes(greeted){
+  const tests = require("../factFunction");
+  const tested = tests()
 
     async function home (req, res) {
         var counters = await greeted.getCounter();
@@ -9,17 +11,20 @@ module.exports = function myGreetedRoutes(greeted){
        }
 
        async function  myGreets  (req, res) {
-        let names = req.body.enterName.toUpperCase();
+        
+        let names = req.body.enterName.charAt(0).toUpperCase() + req.body.enterName.slice(1).toLowerCase();
+
+
         let lingo = req.body.languages1;
       
         if (names && lingo) {
-          var message = greeted.greetingMessage(names, lingo);
+         var message = tested.greetingMessage(names, lingo);
           await greeted.storedNames(names);
           var counters = await greeted.getCounter(); 
       
         }
         else {
-          req.flash("error", greeted.errorMessages(names, lingo));
+          req.flash("error", tested.errorMessages(names, lingo));
         }
       
         res.render("index", {

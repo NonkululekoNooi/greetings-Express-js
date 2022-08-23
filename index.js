@@ -5,7 +5,7 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const myGreetedRoutes = require('./routes/greeted1');
 const myGreeted = require("./GreetMe");
-
+const tests = require("./factFunction");
 const pgp = require("pg-promise")();
 const app = express();
 
@@ -27,6 +27,7 @@ const config = {
 const db = pgp(config);
 
 const greeted = myGreeted(db);
+const tested = tests(greeted)
 const greetedRoutes =myGreetedRoutes(greeted);
 
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
