@@ -44,9 +44,6 @@ describe("The counter will count how many people has been greeted", async functi
   });
 });
 
-
-<<<<<<< HEAD
-=======
 describe("Greeted names stored in an array", function () {
   it("should return names in a array",async function () {
     const greeted = myGreeted(db);
@@ -57,4 +54,4 @@ describe("Greeted names stored in an array", function () {
     
   });
   });
->>>>>>> 2ffc344f592d8edb8ec9e98c5e713cd7ee8d7861
+
