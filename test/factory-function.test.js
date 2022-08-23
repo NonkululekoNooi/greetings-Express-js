@@ -90,17 +90,17 @@ describe("The counter will count how many people has been greeted", async functi
 
   it("should add up people that have been greeted", async function () {
     let greeted = myGreeted(db);
-    await greeted.storedNames("Zintle","Xitsonga");
-    await greeted.storedNames("Anga", "Tshivenda");
+    await greeted.storedNames("Zintle");
+    await greeted.storedNames("Anga");
 
     assert.equal(2, await greeted.getCounter());
   });
   it("should add up people that have been greeted", async function () {
     let greeted = myGreeted(db);
-    await greeted.storedNames("Zintle", "Tshivenda");
-    await greeted.storedNames("Siya", "Tshivenda");
-    await greeted.storedNames("codex", "Tshivenda");
-    await greeted.storedNames("codex", "Siswati");
+    await greeted.storedNames("Zintle");
+    await greeted.storedNames("Siya");
+    await greeted.storedNames("codex");
+    await greeted.storedNames("codex");
 
     assert.equal(3, await greeted.getCounter());
   });
