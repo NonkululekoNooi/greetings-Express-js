@@ -32,9 +32,9 @@ describe("Error messages", function () {
   it("should return an error message if language and name is not entered", function () {
     const greeted = myGreeted();
 
-    let output = greeted.errorMessages("", "");
+    let output = greeted.errorMessages("", "Xitsonga");
 
-    assert.equal("ENTER YOUR NAME AND LANGUAGE PLEASE", output);
+    assert.equal("ENTER YOUR NAME PLEASE", output);
   });
 
   it("should return an error message if the name include numbers", function () {
@@ -79,24 +79,19 @@ describe("The counter will count how many people has been greeted", async functi
     this.beforeEach(async function () {
         await db.none('DELETE FROM greeted_names');
     });
-  it("should start at zero if there is no name and language entered", async function () {
-
-    const greeted = myGreeted(db)
-
-    assert.equal(0, await greeted.getCounter());
-  });
+ 
 
   it("should counting when one person is greeted with Siswati", async function () {
     const greeted = myGreeted(db);
-    await greeted.storedNames("Nkuli");
+    await greeted.storedNames("Nkuli", "Siswati");
 
     assert.equal(1, await greeted.getCounter());
   });
 
   it("should add up people that have been greeted", async function () {
     let greeted = myGreeted(db);
-    await greeted.storedNames("Zintle");
-    await greeted.storedNames("Anga");
+    await greeted.storedNames("Zintle","Xitsonga");
+    await greeted.storedNames("Anga", "Tshivenda");
 
     assert.equal(2, await greeted.getCounter());
   });
@@ -110,3 +105,15 @@ describe("The counter will count how many people has been greeted", async functi
     assert.equal(3, await greeted.getCounter());
   });
 });
+
+
+describe("Greeted names stored in an array", function () {
+  it("should return names in a array",async function () {
+    const greeted = myGreeted(db);
+    await greeted.ourNames([{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]);
+
+    assert.deepEqual( [{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]
+    ,await greeted.ourNames([{"names": "Zintle"},{"names": "Siya"},{"names": "codex"}]))
+    
+  });
+  });
