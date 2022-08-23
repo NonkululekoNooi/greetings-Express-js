@@ -9,7 +9,7 @@ module.exports = function myGreetedRoutes(greeted){
        }
 
        async function  myGreets  (req, res) {
-        let names = req.body.enterName.toUpperCase();
+        let names = req.body.enterName.charAt(0).toUpperCase() + req.body.enterName.slice(1).toLowerCase();
         let lingo = req.body.languages1;
       
         if (names && lingo) {
